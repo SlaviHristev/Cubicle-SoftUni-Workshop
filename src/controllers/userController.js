@@ -17,6 +17,23 @@ router.post('/register', async (req,res) => {
 
 router.get('/login', (req,res) =>{
     res.render('user/login')
+});
+
+router.post('/login', async (req,res) =>{
+    try {
+        const {username,password} = req.body;
+        const token = await userManager.login({username,password});
+        res.cookie('token', token);
+
+        res.redirect('/');
+    } catch (err) {
+        
+    }
+})
+
+router.get('/logout', (req,res) =>{
+    res.clearCookie('token');
+    res.redirect('/');
 })
 
 
