@@ -17,7 +17,7 @@ const cubeSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    Accessories:{
+    accessories:{
         type:String,
     },
     creatorId:{
