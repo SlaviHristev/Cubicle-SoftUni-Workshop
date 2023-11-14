@@ -13,6 +13,7 @@ dbConfig()
 
 expressConfig(app);
 handleBarsConfig(app);
+
 app.use(routes);
 
 
