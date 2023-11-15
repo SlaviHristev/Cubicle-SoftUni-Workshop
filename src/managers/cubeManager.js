@@ -21,7 +21,7 @@ exports.getAll = async (search, from, to) => {
 
 exports.create = (cubeData) => Cube.create(cubeData);
 
-exports.getOne = (cubeId) => Cube.findById(cubeId);
+exports.getOne = (cubeId) => Cube.findById(cubeId).populate('accessories');
 
 exports.attach = (cubeId, accessoryId) => Cube.findByIdAndUpdate(cubeId, {$push: { accessories: accessoryId}});
 

@@ -17,9 +17,11 @@ const cubeSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    accessories:{
-        type:String,
-    },
+    accessories: [{
+        type: mongoose.Types.ObjectId,
+        ref:'Accessory',
+
+    }],
     creatorId:{
         type:String,
         required:true
