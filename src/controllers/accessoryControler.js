@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const accessoryManager = require('../managers/accessoryManager');
+const { extractErrorMessages } = require('../utils/errorHelper');
 
 router.get('/create', (req,res) =>{
     res.render('accessory/create')
@@ -12,8 +12,14 @@ router.post('/create',async(req,res) => {
         imageUrl,
         description
     } = req.body;
+    try {
+        await accessoryManager.create({ name,imageUrl,description});
+        res.redirect('/');
+        
+    } catch (error) {
+        const errorMessages = extractErrorMessages(error);
+        res.render('accessory/create', errorMessages)
+    }
 
-    await accessoryManager.create({ name,imageUrl,description});
-    res.redirect('/');
 })
 module.exports = router;

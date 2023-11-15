@@ -2,8 +2,24 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const userChema = new mongoose.Schema({
-    username: String,
-    password: String
+    username:{
+        type:String,
+        required:[true, 'Username required!'],
+        minLength: [5, 'Username is too short!'],
+        match: /^[A-Za-z0-9]+$/,
+        unique: [true, 'User already exists!']
+    },
+    password: {
+        type:String,
+        required:[true, 'Password required!'],
+        validate:{
+            validator: function(value){
+                return /^[A-Za-z0-9]+$/.test(value)
+            },
+            message: 'Invalid Password'
+        },
+        minLength: [8,'Password is too short!']
+    }
 });
 
 userChema.virtual('repeatPassword')

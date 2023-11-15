@@ -9,7 +9,6 @@ exports.register = (userData) => User.create(userData);
 exports.login = async (username,password) => {
     console.log(username, password);
     const user = await User.findOne({username});
-    console.log(user);
     if(!user){
         throw new Error('Username or password is incorrect.')
     }

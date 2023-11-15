@@ -3,15 +3,15 @@ const mongoose = require('mongoose');
 const cubeSchema = new mongoose.Schema({
     name: {
         type: String,
-        required:true,
+        required: [true, 'Name required!'],
     },
     description: {
         type:String,
-        required: true
+        required: [true, 'Description is required!']
     },
     imageUrl:{
         type:String,
-        required:true
+        required:[true, 'Image URL is required'],
     },
     difficultyLevel:{
         type:String,

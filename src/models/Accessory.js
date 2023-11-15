@@ -2,15 +2,15 @@ const mongoose = require('mongoose');
 const accessorySchema = new mongoose.Schema({
     name:{
         type:String,
-        required: true
+        required: [true, 'Name is required!']
     },
     imageUrl:{
         type:String,
-        required: true
+        required: [true, 'Image URL is required!']
     },
     description:{
         type:String,
-        required:true
+        required:[true, 'Description is required!']
     },
     
 })
